@@ -1,0 +1,54 @@
+
+<div class="panel-heading panel-primary">
+
+    <div class="panel-heading" style="min-height:50px">
+        <div class=" col-md-12" *ngIf="loggedOn && loggedOn.fullName">
+            <div class="col-md-5" style="font-size:20px">Shooter List</div>
+           <div class="col-md-7 text-right">Logged on User: &nbsp; <span>{{loggedOn.fullName}}</span></div>
+        </div>
+    </div>
+
+    <div class="row">&nbsp;</div>
+    
+
+
+    <div class="pre-scrollable" style="min-height:45em">
+        <table class='table' *ngIf="shooterList">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Organisation</th>
+                    <th>Org Num</th>
+                    <th>&nbsp;</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let member of shooterList">
+                    <td>{{ member.listName }}</td>
+                    <td>{{ member.surname + ", " }}</td>
+                    <td>{{ member.emailAddress }}</td>
+                    <td>{{ member.organisationName }}</td>
+                    <td>{{ member.organisationNum }}</td>
+
+                    <!--<td>
+                      
+                            <a [routerLink]="['ShooterDetail',{id:shooter.shooterId}]">
+                                <i class="glyphicon glyphicon-eye-open" style="color:blue"></i>
+                            </a>
+
+                    </td>-->
+                    <td>
+                       
+
+                        <button type="button" class="btn btn-link" (click)="onShooterClicked(member.shooterId)">
+                            <i class="glyphicon glyphicon-eye-open" style="color:blue"></i>
+                        </button>
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
